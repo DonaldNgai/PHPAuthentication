@@ -4,6 +4,11 @@
         "hybridauth/hybridauth": "2.3.0",
         "slim/views": "^0.1.3",
         "twig/twig": "^1.23",
-        "facebook/php-sdk-v4" : "~5.0"
+        "facebook/php-sdk-v4" : "~5.0",
+        "phpmailer/phpmailer": "^5.2",
+        "hassankhan/config": "^0.8.2",
+        "illuminate/database": "^5.1",
+        "alexgarrett/violin": "^2.2",
+        "ircmaxell/random-lib": "^1.1"
     }
 }
