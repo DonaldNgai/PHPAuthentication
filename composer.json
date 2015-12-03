@@ -1,4 +1,9 @@
 {
+    "autoload": {
+        "psr-4": {
+            "DonaldNamespace\\": "app/DonaldNamespace"
+        }
+    },
     "require": {
         "slim/slim": "2.*",
         "hybridauth/hybridauth": "2.3.0",

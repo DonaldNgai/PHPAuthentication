@@ -17,5 +17,6 @@ return array(
     'Illuminate\\Contracts\\' => array($vendorDir . '/illuminate/contracts'),
     'Illuminate\\Container\\' => array($vendorDir . '/illuminate/container'),
     'Facebook\\' => array($vendorDir . '/facebook/php-sdk-v4/src/Facebook'),
+    'DonaldNamespace\\' => array($baseDir . '/app/DonaldNamespace'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
 );

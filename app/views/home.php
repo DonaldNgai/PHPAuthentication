@@ -1,15 +1,22 @@
-<h1>users</h1>
+{%extends 'templates/default.php' %}
 
-{% if users is empty %}
+{% block title %}Home{% endblock %}
+{% block content %}
+	Home
+	<h1>users</h1>
 
-	<p>no users yet</p>
+	{% if users is empty %}
 
-{% else %}
+		<p>no users yet</p>
 
-	{%for user in users%}
+	{% else %}
 
-		{{ user.User_Name}}
+		{%for user in users%}
 
-	{%endfor%}
-	
-{% endif%}
+			{{ user.User_Name }}
+
+		{%endfor%}
+		
+	{% endif %}
+{% endblock %}
+

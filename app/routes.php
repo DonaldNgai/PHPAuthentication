@@ -1,10 +1,10 @@
 <?php
 
-require 'routes/home.php';
-require 'routes/login.php';
-require 'routes/listing.php';
-require 'routes/createListing.php';
-require 'routes/user.php';
-require 'routes/rent.php';
+require INC_ROOT . '/app/routes/home.php';
+require INC_ROOT . '/app/routes/login.php';
+require INC_ROOT . '/app/routes/listing.php';
+require INC_ROOT . '/app/routes/createListing.php';
+require INC_ROOT . '/app/routes/user.php';
+require INC_ROOT . '/app/routes/rent.php';
 
 ?>

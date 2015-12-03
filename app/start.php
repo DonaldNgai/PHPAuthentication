@@ -2,6 +2,7 @@
 
 require '../vendor/autoload.php';
 use Noodlehaus\Config;
+use DonaldNamespace\User\User;
 
 session_cache_limiter(false);
 session_start();
@@ -19,6 +20,10 @@ $app->configureMode($app->config('mode'),function() use($app) {
 });
 
 require ('database.php');
+
+$app->container->set('user', function(){
+	return new User;
+});
 
 //Database
 $app->container->singleton('db',function(){
