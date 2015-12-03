@@ -6,17 +6,17 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class User extends Eloquent
 {
-	protected $table = 'users';
+	protected $table = 'Users';
 
 	protected $fillable = [
 		'Email',
-		'User_Name',
-		'User_Password',
+		'Username',
+		'Password',
 		'active',
 		'active_hash',
 		'remember_identifier',
 		'remember_token',
-		'rating',
+		'Rating',
 		'Last_Login',
 		'Date_Updated'
 	];

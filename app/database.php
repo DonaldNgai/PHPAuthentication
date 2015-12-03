@@ -5,7 +5,7 @@ $capsule = new Capsule;
 $capsule->addConnection([
 		'driver' => $app->config->get('db.driver'),
 		'host' => $app->config->get('db.host'),
-		'name' => $app->config->get('db.name'),
+		'database' => $app->config->get('db.name'),
 		'username' => $app->config->get('db.username'),
 		'password' => $app->config->get('db.password'),
 		'charset' => $app->config->get('db.charset'),

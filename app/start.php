@@ -3,6 +3,8 @@
 require '../vendor/autoload.php';
 use Noodlehaus\Config;
 use DonaldNamespace\User\User;
+use DonaldNamespace\Helpers\Hash;
+use DonaldNamespace\Validation\Validator;
 
 session_cache_limiter(false);
 session_start();
@@ -24,6 +26,16 @@ require ('database.php');
 $app->container->set('user', function(){
 	return new User;
 });
+
+$app->container->singleton('hash', function() use($app){
+	return new Hash($app->config);
+});
+
+$app->container->singleton('validation', function() use($app){
+	return new Validator($app->user);
+});
+
+
 
 //Database
 $app->container->singleton('db',function(){
