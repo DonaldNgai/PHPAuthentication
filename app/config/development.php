@@ -27,7 +27,7 @@ return [
 		'smtp_secure' => 'tls',
 		'host' => 'smtp.gmail.com',
 		'username' => 'transmution@gmail.com',
-		'password' => '',
+		'password' => 'Q456!258w',
 		'port' => 587,
 		'html' => true
 	],

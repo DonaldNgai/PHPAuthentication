@@ -1,11 +1,11 @@
 <?php
-$app->get('/register', function() use($app){
+$app->get('/register',$guest(), function() use($app){
 	
 	$app->render('/Auth/register.php');
 
 })->name('registerPage');
 
-$app->post('/register', function() use ($app){
+$app->post('/register',$guest(), function() use ($app){
 
 	$request = $app->request;
 
@@ -24,11 +24,17 @@ $app->post('/register', function() use ($app){
 		]);
 
 	if($valid->passes()){
-		$app->user->create([
+		$user = $app->user->create([
 		'Email' => $email,
 		'Username' => $username,
 		'Password' => $app->hash->password($password)
 		]);
+
+		$app->mail->send('Auth/Email/registered.php',['user' => $user], function($message) use($user){
+			$message->to($user->Email);
+			$message->subject('Thanks for registering.');
+		});
+
 		$app->flash('global', 'You have been registered.');
 		$app->response->redirect($app->urlFor('homepage'));
 	}

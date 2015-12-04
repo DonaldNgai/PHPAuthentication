@@ -12,7 +12,6 @@ class Validator extends Violin{
 
 	public function __construct(User $user){
 		$this->user = $user;
-		echo "hello";
 
 		$this->addFieldMessages([
 				'email' => [

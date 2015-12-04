@@ -5,6 +5,9 @@ use Noodlehaus\Config;
 use DonaldNamespace\User\User;
 use DonaldNamespace\Helpers\Hash;
 use DonaldNamespace\Validation\Validator;
+use DonaldNamespace\Middleware\BeforeMiddleware;
+use DonaldNamespace\Mail\Mailer;
+
 
 session_cache_limiter(false);
 session_start();
@@ -17,11 +20,16 @@ $app = new \Slim\Slim([
         'view' => new \Slim\Views\Twig()
     ]);
 
+$app->add(new BeforeMiddleware);
+
+$app->auth = false;
+
 $app->configureMode($app->config('mode'),function() use($app) {
 	$app->config = Config::load(INC_ROOT . "/app/config/{$app->mode}.php");
 });
 
 require ('database.php');
+require ('filters.php');
 
 $app->container->set('user', function(){
 	return new User;
@@ -35,7 +43,20 @@ $app->container->singleton('validation', function() use($app){
 	return new Validator($app->user);
 });
 
+$app->container->singleton('mail', function() use($app){
+	$mailer = new PHPMailer;
 
+	$mailer->Host = $app->config->get('mail.host');
+	$mailer->SMTPAuth = $app->config->get('mail.smtp_auth');
+	$mailer->SMTPSecure = $app->config->get('mail.smtp_secure');
+	$mailer->Port = $app->config->get('mail.port');
+	$mailer->Username = $app->config->get('mail.username');
+	$mailer->Password = $app->config->get('mail.password');
+
+	$mailer->isHTML($app->config->get('mail.html'));
+
+	return new Mailer($app->view,$mailer);
+;});
 
 //Database
 $app->container->singleton('db',function(){
@@ -58,5 +79,6 @@ $app->get('/hello/:name', function ($name) {
 });
 
 $app->run();
+
 
 ?>
