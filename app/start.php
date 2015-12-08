@@ -4,8 +4,10 @@ require '../vendor/autoload.php';
 use Noodlehaus\Config;
 use DonaldNamespace\User\User;
 use DonaldNamespace\Helpers\Hash;
+use RandomLib\Factory as RandomLib;
 use DonaldNamespace\Validation\Validator;
 use DonaldNamespace\Middleware\BeforeMiddleware;
+use DonaldNamespace\Middleware\CsrfMiddleware;
 use DonaldNamespace\Mail\Mailer;
 
 
@@ -21,6 +23,8 @@ $app = new \Slim\Slim([
     ]);
 
 $app->add(new BeforeMiddleware);
+
+$app->add(new CsrfMiddleware);
 
 $app->auth = false;
 
@@ -57,6 +61,11 @@ $app->container->singleton('mail', function() use($app){
 
 	return new Mailer($app->view,$mailer);
 ;});
+
+$app->container->singleton('randomLib',function() {
+	$factory = new RandomLib;
+	return $factory->getMediumStrengthGenerator();
+});
 
 //Database
 $app->container->singleton('db',function(){

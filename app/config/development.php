@@ -27,7 +27,7 @@ return [
 		'smtp_secure' => 'tls',
 		'host' => 'smtp.gmail.com',
 		'username' => 'transmution@gmail.com',
-		'password' => 'Q456!258w',
+		'password' => '',
 		'port' => 587,
 		'html' => true
 	],
@@ -35,7 +35,7 @@ return [
 		'debug' => true
 	],
 	'csrf' => [
-		'session' => 'csrf_token'
+		'key' => 'csrf_token'
 	]
 ];
 

@@ -14,6 +14,8 @@
 		</div>
 
 		<input type="submit" value="Log In">
+
+		<input type="hidden" name="{{ csrf_key }}" value="{{ csrf_token }}">
 	</form>
 
 	<a href="{{loginUrl}}"><img src="../public/images/facebook.png" /></a><br />
